@@ -1,0 +1,7 @@
+[main]
+host = https://www.transifex.com
+
+[nethserver.nethserver-cockpit-hotsync]
+source_file = ./app/i18n/en_US.pot
+source_lang = en
+type = PO

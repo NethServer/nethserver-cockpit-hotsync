@@ -1,0 +1,34 @@
+{
+  "id": "nethserver-cockpit-hotsync",
+  "name": "NethServer Hotsync",
+  "summary": "Short description of NethServer Hotsync",
+  "description": "Very very very very very long description of NethServer Hotsync",
+  "screenshots": [{
+    "caption": "Login",
+    "image": "http://my.screenshot.org/login.png"
+  }, {
+    "caption": "Share data",
+    "image": "http://my.screenshot.org/data.png"
+  }],
+  "url": "nethserver-cockpit-hotsync",
+  "homepage": "https://github.com/NethServer/nethserver-cockpit-hotsync",
+  "provides": ["nethserver-cockpit-hotsync"],
+  "release": {
+    "version": "1.0.0"
+  },
+  "tags": [
+    "tag1",
+    "tag2",
+    "tag3"
+  ],
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/NethServer/dev/issues"
+  },
+  "author": {
+    "name": "Author's name of NethServer Hotsync",
+    "url": "https://github.com/NethServer/nethserver-cockpit-hotsync",
+    "email": "Author's email of NethServer Hotsync"
+  },
+  "icon": "icon.png"
+}

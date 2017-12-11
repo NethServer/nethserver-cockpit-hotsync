@@ -1,0 +1,22 @@
+{
+  "name": "nethserver-cockpit-hotsync",
+  "version": "1.0.0",
+  "description": "Grunt task runner for NethServer Hotsync",
+  "devDependencies": {
+    "cryptojs": "^2.5.3",
+    "grunt": "^1.0.1",
+    "grunt-contrib-clean": "^1.1.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-cssmin": "^2.2.1",
+    "grunt-contrib-htmlmin": "^2.4.0",
+    "grunt-contrib-uglify": "^3.1.0",
+    "grunt-docma": "^0.8.1",
+    "grunt-mustache-render": "^1.9.2",
+    "grunt-po2json": "^0.3.0",
+    "grunt-processhtml": "^0.4.1",
+    "grunt-shell": "^2.1.0",
+    "grunt-usemin": "^3.1.1",
+    "grunt-xgettext": "^0.3.5"
+  }
+}
