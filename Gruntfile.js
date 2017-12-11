@@ -136,7 +136,7 @@ module.exports = function (grunt) {
       dest = '~/.local/share/cockpit/nethserver';
     }
     grunt.task.run([
-      'shell:manifest', ['shell:rsync', login, port, 'dist/', dest].join(':'),
+      ['shell:rsync', login, port, 'dist/', dest].join(':'),
     ]);
   });
 
