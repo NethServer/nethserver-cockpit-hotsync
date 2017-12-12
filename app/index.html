@@ -80,19 +80,7 @@
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
           <form class="form-horizontal" ng-submit="setProp(hsyncSettings.host, hsyncSettings.password, hsyncSettings.role)">
             <div class="form-group">
-              <label class="col-sm-3 control-label" for="textInput-markup">Remote host IP</label>
-              <div class="col-sm-9">
-                <input ng-model="hsyncSettings.host" type="text" id="textInput-markup" class="form-control" required>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-sm-3 control-label" for="textInputDisabled-markup">Password</label>
-              <div class="col-sm-9">
-                <input ng-model="hsyncSettings.password" type="password" id="textInputDisabled-markup" class="form-control" required>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-sm-3 control-label" for="inputError-markup">Role</label>
+              <label class="col-sm-3 control-label" for="inputError-markup">Local server Role</label>
               <div class="col-sm-9">
                 <div class="btn-group bootstrap-select dropdown form-control" data-field="chunk">
                   <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
@@ -106,7 +94,28 @@
                 </div>
               </div>
             </div>
-            <div class="form-group">
+            <div ng-if="hsyncSettings.role !== ''" class="form-group">
+              <label ng-if="hsyncSettings.role == 'master'" class="col-sm-3 control-label" for="textInput-markup">Remote Slave IP</label>
+              <label ng-if="hsyncSettings.role == 'slave'" class="col-sm-3 control-label" for="textInput-markup">Remote Master IP</label>
+              <div class="col-sm-9">
+                <input ng-model="hsyncSettings.host" type="text" id="textInput-markup" class="form-control" required>
+              </div>
+            </div>
+            <div ng-if="hsyncSettings.role !== ''" class="form-group">
+              <label class="col-sm-3 control-label" for="textInputDisabled-markup">Password</label>
+              <div class="col-sm-9">
+
+                <div class="input-group">
+                  <input ng-model="hsyncSettings.password" type="password" id="passwdHotsync" name="password" class="form-control" data-toggle="password" required>
+                  <span class="input-group-btn">
+                    <button ng-click="hideShowPasswd()" class="btn btn-default" type="button"><i id="passwdIcon" class="fa fa-eye" aria-hidden="true"></i></button>
+                  </span>
+                </div>
+
+                <i>The password must be the same for Slave and Master!</i>
+              </div>
+            </div>
+            <div ng-if="hsyncSettings.role !== ''" class="form-group">
               <label class="col-sm-3 control-label" for="inputError-markup"></label>
               <div class="col-sm-9">
                 <button class="btn btn-primary" type="submit">Save</button>

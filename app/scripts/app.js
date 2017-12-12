@@ -40,6 +40,10 @@ angular.module('nethserverCockpitHotsyncApp', [])
     $scope.getProps();
 
     $scope.setRole = function(role) {
+      if (role != $scope.hsyncSettings.role) {
+        $scope.hsyncSettings.password = '';
+        $scope.hsyncSettings.host = '';
+      }
       $scope.hsyncSettings.role = role;
     }
 
@@ -78,6 +82,19 @@ angular.module('nethserverCockpitHotsyncApp', [])
       $scope.hsyncSettings.host = '';
       $scope.hsyncSettings.password = '';
       $scope.hsyncSettings.role = '';
+    }
+
+    $scope.hideShowPasswd = function() {
+      var inputType = $('#passwdHotsync').attr('type');
+      if (inputType == 'password') {
+        $('#passwdHotsync').attr('type', 'text');
+        $('#passwdIcon').removeClass('fa-eye');
+        $('#passwdIcon').addClass('fa-eye-slash');
+      } else if (inputType == 'text') {
+        $('#passwdHotsync').attr('type', 'password');
+        $('#passwdIcon').removeClass('fa-eye-slash');
+        $('#passwdIcon').addClass('fa-eye');
+      }
     }
 
     $scope.setMysqlSync = function(status) {
