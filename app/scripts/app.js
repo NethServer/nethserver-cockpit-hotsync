@@ -18,6 +18,10 @@ angular.module('nethserverCockpitHotsyncApp', [])
       'sqlSync': '',
       'status': ''
     }
+    $scope.hsyncProps = {}
+    $scope.rsyncdProps = {}
+
+    $scope.hsyncConfigured = false;
 
     $scope.db = nethserver.getDatabase('configuration');
 
@@ -32,6 +36,9 @@ angular.module('nethserverCockpitHotsyncApp', [])
           $scope.hsyncSettings.host = $scope.hsyncProps.MasterHost;
         } else if ($scope.hsyncProps.role == 'master') {
           $scope.hsyncSettings.host = $scope.hsyncProps.SlaveHost;
+        }
+        if ($scope.hsyncProps.role !== '' && $scope.hsyncProps.role !== undefined) {
+          $scope.hsyncConfigured = true;
         }
         $scope.hsyncSettings.sqlSync = $scope.hsyncProps.databases;
         $scope.$apply();
@@ -80,9 +87,19 @@ angular.module('nethserverCockpitHotsyncApp', [])
     }
 
     $scope.clearSettings = function() {
-      $scope.hsyncSettings.host = '';
-      $scope.hsyncSettings.password = '';
-      $scope.hsyncSettings.role = '';
+      if ($scope.hsyncProps.role !== undefined) {
+        if ($scope.hsyncProps.role == 'slave') {
+          $scope.hsyncSettings.host = $scope.hsyncProps.MasterHost;
+        } else if ($scope.hsyncProps.role == 'master') {
+          $scope.hsyncSettings.host = $scope.hsyncProps.SlaveHost;
+        }
+        $scope.hsyncSettings.password = $scope.rsyncdProps.password;
+        $scope.hsyncSettings.role = $scope.hsyncProps.role;
+      } else {
+        $scope.hsyncSettings.host = '';
+        $scope.hsyncSettings.password = '';
+        $scope.hsyncSettings.role = '';
+      }
     }
 
     $scope.hideShowPasswd = function() {
