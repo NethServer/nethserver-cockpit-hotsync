@@ -28,9 +28,9 @@ angular.module('nethserverCockpitHotsyncApp', [])
         $scope.hsyncSettings.status = $scope.hsyncProps.status;
         $scope.hsyncSettings.role = $scope.hsyncProps.role;
         $scope.hsyncSettings.password = $scope.rsyncdProps.password;
-        if ($scope.hsyncProps.role == 'master') {
+        if ($scope.hsyncProps.role == 'slave') {
           $scope.hsyncSettings.host = $scope.hsyncProps.MasterHost;
-        } else if ($scope.hsyncProps.role == 'slave') {
+        } else if ($scope.hsyncProps.role == 'master') {
           $scope.hsyncSettings.host = $scope.hsyncProps.SlaveHost;
         }
         $scope.hsyncSettings.sqlSync = $scope.hsyncProps.databases;
@@ -50,19 +50,20 @@ angular.module('nethserverCockpitHotsyncApp', [])
     $scope.setProp = function(host, password, role) {
       return $scope.db.open().then(function() {
         if (role != '' || role != undefined) {
-          if (role == 'master') {
+          if (role == 'slave') {
             var hostKey = 'MasterHost';
-          } else if (role == 'slave') {
+          } else if (role == 'master') {
             var hostKey = 'SlaveHost';
           }
+          $scope.db.setProp('hotsync', 'role', role);
           $scope.db.setProp('hotsync', hostKey, host);
           $scope.db.setProp('rsyncd', 'password', password);
-          $scope.db.setProp('hotsync', 'role', role);
           return $scope.db.save();
         }
       }).then(function() {
         return nethserver.signalEvent('nethserver-hotsync-update').then(function() {
           $scope.getProps();
+          console.log($scope.hsyncSettings.host);
         });
       });
     }
