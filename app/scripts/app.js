@@ -11,6 +11,8 @@
 angular.module('nethserverCockpitHotsyncApp', [])
   .controller('HotsyncCtrl', ['$scope', function($scope) {
 
+    var _ = cockpit.gettext;
+
     $scope.hsyncSettings = {
       'host': '',
       'password': '',
@@ -125,4 +127,33 @@ angular.module('nethserverCockpitHotsyncApp', [])
         });
       });
     }
+
+    // i18n labels
+    $scope.labels = {
+      app_header: _('NethServer Hotsync'),
+      section_status_title: _('Status'),
+      section_status_card1_header: _('Hotsync Status'),
+      section_status_enabled: _('Enabled'),
+      section_status_disabled: _('Disabled'),
+      section_status_card1_body1: _('Set Hotsync status as enabled'),
+      section_status_card1_body2: _('Set Hotsync status as disabled'),
+      section_status_card1_action1: _('Enable Hotsync'),
+      section_status_card1_action2: _('Disable Hotsync'),
+      section_status_card2_header: _('Mysql Synchronization'),
+      section_status_card2_body: _('If Mysql is installed, it will be synchronized by default'),
+      section_status_card2_action1: _('Enable Mysql'),
+      section_status_card2_action2: _('Disable Mysql'),
+      section_settings_title: _('Settings'),
+      section_settings_form_label1: _('Local server Role'),
+      section_settings_form_selectval0: _('Select role'),
+      section_settings_form_selectval1: _('Master'),
+      section_settings_form_selectval2: _('Slave'),
+      section_settings_form_label2_1: _('Remote Master IP'),
+      section_settings_form_label2_2: _('Remote Slave IP'),
+      section_settings_form_label3: _('Password'),
+      section_settings_form_label3_ps: _('The password must be the same for Slave and Master!'),
+      section_settings_form_save: _('Save'),
+      section_settings_form_cancel: _('Cancel')
+    }
+
   }]);
