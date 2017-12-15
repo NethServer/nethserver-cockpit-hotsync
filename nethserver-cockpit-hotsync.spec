@@ -1,5 +1,5 @@
 Name:           nethserver-cockpit-hotsync
-Version:        1.0.0
+Version:        0.0.0
 Release:        1%{?dist}
 Summary:        Short description of NethServer Hotsync
 
