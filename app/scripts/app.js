@@ -1,3 +1,23 @@
+/*
+ * Copyright (C) 2017 Nethesis S.r.l.
+ * http://www.nethesis.it - nethserver@nethesis.it
+ *
+ * This script is part of NethServer.
+ *
+ * NethServer is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License,
+ * or any later version.
+ *
+ * NethServer is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with NethServer.  If not, see COPYING.
+ */
+
 'use strict';
 
 /**
@@ -11,6 +31,8 @@
 angular.module('nethserverCockpitHotsyncApp', [])
   .controller('HotsyncCtrl', ['$scope', function($scope) {
 
+    var _ = cockpit.gettext;
+
     $scope.hsyncSettings = {
       'host': '',
       'password': '',
@@ -22,6 +44,7 @@ angular.module('nethserverCockpitHotsyncApp', [])
     $scope.rsyncdProps = {}
 
     $scope.hsyncConfigured = false;
+    $scope.roleSaved = '';
 
     $scope.db = nethserver.getDatabase('configuration');
 
@@ -40,6 +63,7 @@ angular.module('nethserverCockpitHotsyncApp', [])
         if ($scope.hsyncProps.role !== '' && $scope.hsyncProps.role !== undefined) {
           $scope.hsyncConfigured = true;
         }
+        $scope.roleSaved = $scope.hsyncSettings.role;
         $scope.hsyncSettings.sqlSync = $scope.hsyncProps.databases;
         $scope.$apply();
       });
@@ -125,4 +149,33 @@ angular.module('nethserverCockpitHotsyncApp', [])
         });
       });
     }
+
+    // i18n labels
+    $scope.labels = {
+      app_header: _('NethServer Hotsync'),
+      section_status_title: _('Status'),
+      section_status_card1_header: _('Hotsync Status'),
+      section_status_enabled: _('Enabled'),
+      section_status_disabled: _('Disabled'),
+      section_status_card1_body1: _('Set Hotsync status as enabled'),
+      section_status_card1_body2: _('Set Hotsync status as disabled'),
+      section_status_card1_action1: _('Enable Hotsync'),
+      section_status_card1_action2: _('Disable Hotsync'),
+      section_status_card2_header: _('Mysql Synchronization'),
+      section_status_card2_body: _('If Mysql is installed, it will be synchronized by default'),
+      section_status_card2_action1: _('Enable Mysql'),
+      section_status_card2_action2: _('Disable Mysql'),
+      section_settings_title: _('Settings'),
+      section_settings_form_label1: _('Local Server Role'),
+      section_settings_form_selectval0: _('Select role'),
+      section_settings_form_selectval1: _('Master'),
+      section_settings_form_selectval2: _('Slave'),
+      section_settings_form_label2_1: _('Remote Master IP'),
+      section_settings_form_label2_2: _('Remote Slave IP'),
+      section_settings_form_label3: _('Password'),
+      section_settings_form_label3_ps: _('The password must be the same for Slave and Master!'),
+      section_settings_form_save: _('Save'),
+      section_settings_form_cancel: _('Cancel')
+    }
+
   }]);

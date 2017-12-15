@@ -23,31 +23,31 @@
     <div class="row row-cards-pf">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 app-summary">
         <h1 class="app-header">
-          NethServer Hotsync
+          {{labels.app_header}}
         </h1>
-        <h3 ng-if="hsyncConfigured === true">Status</h3>
-        <div ng-if="hsyncConfigured === true" class="row row-cards-pf">
+        <h3 ng-if="hsyncConfigured === true && roleSaved == 'master'">{{labels.section_status_title}}</h3>
+        <div ng-if="hsyncConfigured === true && roleSaved == 'master'" class="row row-cards-pf">
 
           <div class="col-xs-12 col-sm-4 col-md-4 col-md-4">
             <div class="card-pf">
               <h2 class="card-pf-title">
-                Hotsync Status:
-                <span ng-if="hsyncSettings.status == 'disabled'" class="text-danger">Disabled</span>
-                <span ng-if="hsyncSettings.status == 'enabled'" class="text-success">Enabled</span>
+                {{labels.section_status_card1_header}}:
+                <span ng-if="hsyncSettings.status == 'disabled'" class="text-danger">{{labels.section_status_disabled}}</span>
+                <span ng-if="hsyncSettings.status == 'enabled'" class="text-success">{{labels.section_status_enabled}}</span>
               </h2>
               <div ng-if="hsyncSettings.status == 'enabled'" class="card-pf-body">
-                <p>Set Hotsync status as disabled</p>
+                <p>{{labels.section_status_card1_body2}}</p>
               </div>
               <div ng-if="hsyncSettings.status == 'disabled'" class="card-pf-body">
-                <p>Set Hotsync status as enabled</p>
+                <p>{{labels.section_status_card1_body1}}</p>
               </div>
               <div class="card-pf-footer">
                 <p>
                   <a ng-if="hsyncSettings.status == 'enabled'" ng-click="setHotsyncStatus('disabled')" class="card-pf-link-with-icon pointer">
-                    <span class="fa fa-times"></span>Disable Hotsync
+                    <span class="fa fa-times"></span>{{labels.section_status_card1_action2}}
                   </a>
                   <a ng-if="hsyncSettings.status == 'disabled'" ng-click="setHotsyncStatus('enabled')" class="card-pf-link-with-icon pointer">
-                    <span class="fa fa-check"></span>Enable Hotsync
+                    <span class="fa fa-check"></span>{{labels.section_status_card1_action1}}
                   </a>
                 </p>
               </div>
@@ -57,20 +57,20 @@
           <div class="col-xs-12 col-sm-4 col-md-4 col-md-4">
             <div class="card-pf">
               <h2 class="card-pf-title">
-                Mysql Synchronization:
-                <span ng-if="hsyncSettings.sqlSync == 'disabled'" class="text-danger">Disabled</span>
-                <span ng-if="hsyncSettings.sqlSync == 'enabled'" class="text-success">Enabled</span>
+                {{labels.section_status_card2_header}}:
+                <span ng-if="hsyncSettings.sqlSync == 'disabled'" class="text-danger">{{labels.section_status_disabled}}</span>
+                <span ng-if="hsyncSettings.sqlSync == 'enabled'" class="text-success">{{labels.section_status_enabled}}</span>
               </h2>
               <div class="card-pf-body">
-                <p>If Mysql is installed, it will be synchronized by default</p>
+                <p>{{labels.section_status_card2_body}}</p>
               </div>
               <div class="card-pf-footer">
                 <p>
                   <a ng-if="hsyncSettings.sqlSync == 'enabled'" ng-click="setMysqlSync('disabled')" class="card-pf-link-with-icon pointer">
-                    <span class="fa fa-times"></span>Disable Mysql
+                    <span class="fa fa-times"></span>{{labels.section_status_card2_action2}}
                   </a>
                   <a ng-if="hsyncSettings.sqlSync == 'disabled'" ng-click="setMysqlSync('enabled')" class="card-pf-link-with-icon pointer">
-                    <span class="fa fa-check"></span>Enable Mysql
+                    <span class="fa fa-check"></span>{{labels.section_status_card2_action1}}
                   </a>
                 </p>
               </div>
@@ -80,33 +80,33 @@
         <!-- /row -->
       </div>
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 app-settings">
-        <h3>Settings</h3>
+        <h3>{{labels.section_settings_title}}</h3>
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
           <form class="form-horizontal" ng-submit="setProp(hsyncSettings.host, hsyncSettings.password, hsyncSettings.role)">
             <div class="form-group">
-              <label class="col-sm-3 control-label" for="inputError-markup">Local server Role</label>
+              <label class="col-sm-3 control-label" for="inputError-markup">{{labels.section_settings_form_label1}}</label>
               <div class="col-sm-9">
                 <div class="btn-group bootstrap-select dropdown form-control" data-field="chunk">
                   <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                    <span class="pull-left">{{hsyncSettings.role == 'master' ? 'Master' : hsyncSettings.role == 'slave' ? 'Slave' : 'Select role'}}</span>
+                    <span class="pull-left">{{hsyncSettings.role == 'master' ? labels.section_settings_form_selectval1 : hsyncSettings.role == 'slave' ? labels.section_settings_form_selectval2 : labels.section_settings_form_selectval0}}</span>
                     <span class="caret"></span>
                   </button>
                   <ul class="dropdown-menu">
-                    <li ng-click="setRole('master')" class="{{hsyncSettings.role == 'master' ? 'selected' : ''}}"><a>Master</a></li>
-                    <li ng-click="setRole('slave')" class="{{hsyncSettings.role == 'slave' ? 'selected' : ''}}"><a>Slave</a></li>
+                    <li ng-click="setRole('master')" class="{{hsyncSettings.role == 'master' ? 'selected' : ''}}"><a>{{labels.section_settings_form_selectval1}}</a></li>
+                    <li ng-click="setRole('slave')" class="{{hsyncSettings.role == 'slave' ? 'selected' : ''}}"><a>{{labels.section_settings_form_selectval2}}</a></li>
                   </ul>
                 </div>
               </div>
             </div>
             <div ng-if="hsyncSettings.role !== ''" class="form-group">
-              <label ng-if="hsyncSettings.role == 'master'" class="col-sm-3 control-label" for="textInput-markup">Remote Slave IP</label>
-              <label ng-if="hsyncSettings.role == 'slave'" class="col-sm-3 control-label" for="textInput-markup">Remote Master IP</label>
+              <label ng-if="hsyncSettings.role == 'master'" class="col-sm-3 control-label" for="textInput-markup">{{labels.section_settings_form_label2_2}}</label>
+              <label ng-if="hsyncSettings.role == 'slave'" class="col-sm-3 control-label" for="textInput-markup">{{labels.section_settings_form_label2_1}}</label>
               <div class="col-sm-9">
                 <input ng-model="hsyncSettings.host" type="text" id="textInput-markup" class="form-control" required>
               </div>
             </div>
             <div ng-if="hsyncSettings.role !== ''" class="form-group">
-              <label class="col-sm-3 control-label" for="textInputDisabled-markup">Password</label>
+              <label class="col-sm-3 control-label" for="textInputDisabled-markup">{{labels.section_settings_form_label3}}</label>
               <div class="col-sm-9">
 
                 <div class="input-group">
@@ -116,14 +116,14 @@
                   </span>
                 </div>
 
-                <i>The password must be the same for Slave and Master!</i>
+                <i>{{labels.section_settings_form_label3_ps}}</i>
               </div>
             </div>
             <div ng-if="hsyncSettings.role !== ''" class="form-group">
               <label class="col-sm-3 control-label" for="inputError-markup"></label>
               <div class="col-sm-9">
-                <button class="btn btn-primary" type="submit">Save</button>
-                <button ng-click="clearSettings()" class="btn btn-default" type="button">Cancel</button>
+                <button class="btn btn-primary" type="submit">{{labels.section_settings_form_save}}</button>
+                <button ng-click="clearSettings()" class="btn btn-default" type="button">{{labels.section_settings_form_cancel}}</button>
               </div>
             </div>
           </form>
@@ -136,7 +136,6 @@
   <script src="../base1/jquery.min.js"></script>
   <script src="../base1/cockpit.min.js"></script>
   <script src="../nethserver/core.min.js"></script>
-
 
   <!-- build:js app.min.js -->
   <script src="scripts/angular.min.js"></script>
