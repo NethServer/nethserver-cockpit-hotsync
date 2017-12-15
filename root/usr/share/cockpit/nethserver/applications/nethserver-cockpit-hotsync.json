@@ -1,7 +1,7 @@
 {
   "id": "nethserver-cockpit-hotsync",
   "name": "NethServer Hotsync",
-  "summary": "NethServer Hotsync",
+  "summary": "NethServer Hotsync Management",
   "description": "NethServer hotsync aims to reduce downtime in case of failure. When a hardware damage occurs time to fix/buy another server and restore backup are 0 and time to install OS is 5 minutes (time to activate spare server). Users are able to start working again in few minutes, using data from a few minutes before the crash.",
   "screenshots": [{
     "caption": "Login",

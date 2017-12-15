@@ -24,6 +24,7 @@ angular.module('nethserverCockpitHotsyncApp', [])
     $scope.rsyncdProps = {}
 
     $scope.hsyncConfigured = false;
+    $scope.roleSaved = '';
 
     $scope.db = nethserver.getDatabase('configuration');
 
@@ -42,6 +43,7 @@ angular.module('nethserverCockpitHotsyncApp', [])
         if ($scope.hsyncProps.role !== '' && $scope.hsyncProps.role !== undefined) {
           $scope.hsyncConfigured = true;
         }
+        $scope.roleSaved = $scope.hsyncSettings.role;
         $scope.hsyncSettings.sqlSync = $scope.hsyncProps.databases;
         $scope.$apply();
       });
@@ -144,7 +146,7 @@ angular.module('nethserverCockpitHotsyncApp', [])
       section_status_card2_action1: _('Enable Mysql'),
       section_status_card2_action2: _('Disable Mysql'),
       section_settings_title: _('Settings'),
-      section_settings_form_label1: _('Local server Role'),
+      section_settings_form_label1: _('Local Server Role'),
       section_settings_form_selectval0: _('Select role'),
       section_settings_form_selectval1: _('Master'),
       section_settings_form_selectval2: _('Slave'),

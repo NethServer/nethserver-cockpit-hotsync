@@ -25,8 +25,8 @@
         <h1 class="app-header">
           {{labels.app_header}}
         </h1>
-        <h3 ng-if="hsyncConfigured === true">{{labels.section_status_title}}</h3>
-        <div ng-if="hsyncConfigured === true" class="row row-cards-pf">
+        <h3 ng-if="hsyncConfigured === true && roleSaved == 'master'">{{labels.section_status_title}}</h3>
+        <div ng-if="hsyncConfigured === true && roleSaved == 'master'" class="row row-cards-pf">
 
           <div class="col-xs-12 col-sm-4 col-md-4 col-md-4">
             <div class="card-pf">
