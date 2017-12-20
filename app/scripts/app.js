@@ -150,6 +150,10 @@ angular.module('nethserverCockpitHotsyncApp', [])
       });
     }
 
+    $scope.startPromotion = function() {
+      nethserver.signalEvent('nethserver-hotsync-restore');
+    }
+
     // i18n labels
     $scope.labels = {
       app_header: _('NethServer Hotsync'),
@@ -175,7 +179,11 @@ angular.module('nethserverCockpitHotsyncApp', [])
       section_settings_form_label3: _('Password'),
       section_settings_form_label3_ps: _('The password must be the same for Slave and Master!'),
       section_settings_form_save: _('Save'),
-      section_settings_form_cancel: _('Cancel')
+      section_settings_form_cancel: _('Cancel'),
+      section_status_card3_header: _('Promote to Master'),
+      section_status_card3_body: _('Start restoring Masters IP,data and configurations on Slave'),
+      section_status_card3_action: _('Start promotion to Master'),
+      section_settings_form_label2_12: _('Remote IP')
     }
 
   }]);

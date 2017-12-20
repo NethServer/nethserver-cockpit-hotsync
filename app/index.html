@@ -25,7 +25,7 @@
         <h1 class="app-header">
           {{labels.app_header}}
         </h1>
-        <h3 ng-if="hsyncConfigured === true && roleSaved == 'master'">{{labels.section_status_title}}</h3>
+        <h3>{{labels.section_status_title}}</h3>
         <div ng-if="hsyncConfigured === true && roleSaved == 'master'" class="row row-cards-pf">
 
           <div class="col-xs-12 col-sm-4 col-md-4 col-md-4">
@@ -77,7 +77,28 @@
             </div>
           </div>
         </div>
+
+        <div ng-if="hsyncConfigured === true && roleSaved == 'slave'" class="row row-cards-pf">
+          <div class="col-xs-12 col-sm-4 col-md-4 col-md-4">
+            <div class="card-pf">
+              <h2 class="card-pf-title">
+                {{labels.section_status_card3_header}}
+              </h2>
+              <div class="card-pf-body">
+                <p>{{labels.section_status_card3_body}}</p>
+              </div>
+              <div class="card-pf-footer">
+                <p>
+                  <a ng-click="startPromotion()" class="card-pf-link-with-icon pointer">
+                    <span class="fa fa-check"></span>{{labels.section_status_card3_action}}
+                  </a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
         <!-- /row -->
+
       </div>
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 app-settings">
         <h3>{{labels.section_settings_title}}</h3>
@@ -101,6 +122,7 @@
             <div ng-if="hsyncSettings.role !== ''" class="form-group">
               <label ng-if="hsyncSettings.role == 'master'" class="col-sm-3 control-label" for="textInput-markup">{{labels.section_settings_form_label2_2}}</label>
               <label ng-if="hsyncSettings.role == 'slave'" class="col-sm-3 control-label" for="textInput-markup">{{labels.section_settings_form_label2_1}}</label>
+              <label ng-if="hsyncSettings.role != 'slave' && hsyncSettings.role != 'master'" class="col-sm-3 control-label" for="textInput-markup">{{labels.section_settings_form_label2_12}}</label>
               <div class="col-sm-9">
                 <input ng-model="hsyncSettings.host" type="text" id="textInput-markup" class="form-control" required>
               </div>
