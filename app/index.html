@@ -20,6 +20,7 @@
 
 <body ng-app="nethserverCockpitHotsyncApp" ng-controller="HotsyncCtrl" ng-csp>
   <div class="container-fluid container-cards-pf">
+
     <div class="row row-cards-pf">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 app-summary">
         <h1 class="app-header">
@@ -89,7 +90,7 @@
               </div>
               <div class="card-pf-footer">
                 <p>
-                  <a ng-click="startPromotion()" class="card-pf-link-with-icon pointer">
+                  <a data-toggle="modal" data-target="#promoteModal" class="card-pf-link-with-icon pointer">
                     <span class="fa fa-check"></span>{{labels.section_status_card3_action}}
                   </a>
                 </p>
@@ -150,6 +151,26 @@
             </div>
           </form>
 
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="promoteModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            <span class="pficon pficon-close"></span>
+          </button>
+          <h4 class="modal-title" id="myModalLabel">{{labels.section_status_card3_header}}</h4>
+        </div>
+        <div class="modal-body">
+          {{labels.modal_promote_confirm_content}}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">{{labels.section_settings_form_cancel}}</button>
+          <button ng-click="startPromotion()" type="button" data-dismiss="modal" class="btn btn-primary">{{labels.modal_promote_action}}</button>
         </div>
       </div>
     </div>
