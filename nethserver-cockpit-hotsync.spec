@@ -11,10 +11,10 @@ Source1:        nethserver-cockpit-hotsync.tar.gz
 BuildArch:      noarch
 
 BuildRequires:  nethserver-devtools
-Requires:       nethserver-cockpit
+Requires:       nethserver-cockpit, nethserver-hotsync
 
 %description
-Very very very very very long description of NethServer Hotsync
+NethServer hotsync aims to reduce downtime in case of failure. When a hardware damage occurs time to fix/buy another server and restore backup are 0 and time to install OS is 5 minutes (time to activate spare server). Users are able to start working again in few minutes, using data from a few minutes before the crash.
 
 %prep
 %setup
