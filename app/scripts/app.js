@@ -183,7 +183,9 @@ angular.module('nethserverCockpitHotsyncApp', [])
       section_status_card3_header: _('Promote to Master'),
       section_status_card3_body: _('Start restoring Masters IP,data and configurations on Slave'),
       section_status_card3_action: _('Start promotion to Master'),
-      section_settings_form_label2_12: _('Remote IP')
+      section_settings_form_label2_12: _('Remote IP'),
+      modal_promote_confirm_content: _('Are you sure you want to promote the Slave to Master?'),
+      modal_promote_action: _('Promote')
     }
 
   }]);
