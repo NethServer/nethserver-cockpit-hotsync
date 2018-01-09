@@ -94,7 +94,7 @@ angular.module('nethserverCockpitHotsyncApp', [])
       }).then(function() {
         return nethserver.signalEvent('nethserver-hotsync-update').then(function() {
           $scope.getProps();
-          console.log($scope.hsyncSettings.host);
+          return cockpit.spawn(['/usr/libexec/nethserver/cockpit-control-service', 'stunnel', 'restart']);
         });
       });
     }
