@@ -92,7 +92,7 @@ angular.module('nethserverCockpitHotsyncApp', [])
           return $scope.db.save();
         }
       }).then(function() {
-        return nethserver.signalEvent('nethserver-hotsync-update').then(function() {
+        return nethserver.signalEvent('nethserver-hotsync-save').then(function() {
           $scope.getProps();
           console.log($scope.hsyncSettings.host);
         });
@@ -104,7 +104,7 @@ angular.module('nethserverCockpitHotsyncApp', [])
         $scope.db.setProp('hotsync', 'status', status);
         return $scope.db.save();
       }).then(function() {
-        return nethserver.signalEvent('nethserver-hotsync-update').then(function() {
+        return nethserver.signalEvent('nethserver-hotsync-save').then(function() {
           $scope.getProps();
         });
       });
@@ -144,7 +144,7 @@ angular.module('nethserverCockpitHotsyncApp', [])
         $scope.db.setProp('hotsync', 'databases', status);
         return $scope.db.save();
       }).then(function() {
-        return nethserver.signalEvent('nethserver-hotsync-update').then(function() {
+        return nethserver.signalEvent('nethserver-hotsync-save').then(function() {
           $scope.getProps();
         });
       });
